@@ -45,9 +45,9 @@ It will display following help.
     For sender: ./udp_file_sendreceive send <filename>
     For receiver: ./udp_file_sendreceive receive <ip-address>
 
-For sending a file user first command and for receiving a file use second command.
+For sending a file, use first command and for receiving a file, use second command.
 A file sender waits for a receiver to connect.
-For example i have a file names 'foobar.txt' which i want to send to another machine.
+For example i have a file named 'foobar.txt' which i want to send to another machine.
 On terminal run,
 
     $ ./udp_file_sendreceive send foobar.txt
