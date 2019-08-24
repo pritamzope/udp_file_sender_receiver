@@ -58,9 +58,7 @@ On another machine or another terminal but different location run,
     $ ./udp_file_sendreceive receive <ip-address-of-the-sender-machine>
 
 
-
-
-
+## Demo
 
 
 <img src="https://raw.githubusercontent.com/pritamzope/udp_file_sender_receiver/master/send_receive_demo.png" width="930" height="530"/>
