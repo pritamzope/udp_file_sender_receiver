@@ -60,6 +60,6 @@ On another machine or another terminal but different location run,
 
 
 
-<img src="https://raw.githubusercontent.com/pritamzope/udp_file_sender_receiver/master/send_receive_demo.png" width="750" height="430"/>
+<img src="https://raw.githubusercontent.com/pritamzope/udp_file_sender_receiver/master/send_receive_demo.png" width="930" height="530"/>
 
 
