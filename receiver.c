@@ -38,6 +38,9 @@ void receive_filename(int* socket, struct sockaddr_in* _sockaddr, char* filename
       return;
     }
 
+    if(dp.buf_size > BUFFER_SIZE)
+      dp.buf_size = BUFFER_SIZE;
+
     //check for error in each data packet buffer item
     for(int i = 0; i < dp.buf_size; i++){
       if(cyclic_redundancy_check(dp.buffer[i], CRC_DIVISOR) == false){
@@ -53,11 +56,11 @@ void receive_filename(int* socket, struct sockaddr_in* _sockaddr, char* filename
   //send OK response to the sender for sending file contents
   send_response(&(*socket), &(*_sockaddr), OK);
 
-  //get filaname
-  for(int i = 0; i < dp.buf_size; i++)
+  //get filaname including '\0' character
+  for(int i = 0; i <= dp.buf_size; i++)
     data[i] = (byte)dp.buffer[i];
 
-  strncpy(filename, data, dp.buf_size);
+  strncpy(filename, data, dp.buf_size+1);
 
 }
 
@@ -175,5 +178,4 @@ void file_receiver(int* socket, struct sockaddr_in* _sockaddr)
   receive_file(&(*socket), &(*_sockaddr), filename);
 
 }
-
 
