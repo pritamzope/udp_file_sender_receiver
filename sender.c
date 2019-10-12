@@ -26,10 +26,14 @@ void send_filename(int* socket, struct sockaddr_in* _sockaddr, char* filename)
   //from receiver
   do{
     dp.type = FILENAME;
+
+    if(filename_len >= BUFFER_SIZE)
+      filename_len = BUFFER_SIZE - 2;  // '\0' character
+
     dp.buf_size = filename_len;
 
-    //attach CRC to the each data in the buffer
-    for(int i = 0; i < dp.buf_size; i++){
+    //attach CRC to the each data in the buffer including '\0' character
+    for(int i = 0; i <= dp.buf_size; i++){
       dp.buffer[i] = filename[i];
       dp.buffer[i] <<= 4;
       uint_t result = get_cyclic_redundancy_check_result(dp.buffer[i], CRC_DIVISOR);
@@ -144,4 +148,3 @@ void file_sender(int* socket, struct sockaddr_in* _sockaddr, char* filename)
   send_file(&(*socket), &(*_sockaddr), filename);	
 
 }
-
